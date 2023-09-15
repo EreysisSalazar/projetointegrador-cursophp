@@ -1,29 +1,4 @@
-<?php
 
-include "conexao.php";
-$nomeesobrenome = $_GET['nomeesobrenome'];
-$cpf = $_GET['cpf'];
-$endereco = $_GET['endereco'];
-$RG= $_GET['rg'];
-$data = $_GET['data'];
-$telefone = $_GET['telefone'];
-$email= $_GET['email'];
-$numerodecartaosus = $_GET['numerodecartaosus'];
-
-
-$sql = "insert into consulta (cpfdepaciente, dataconsulta, horaconsulta, motivoconsulta, nomepaciente, numcartaosus)
-values ('$cpfdepaciente', '$dataconsulta', '$horaconsulta', '$motivoconsulta', '$nomepaciente', '$numcartaosus)";
-
-
-$qry = mysqli_query($con,$sql);
-
-if ($qry) {
-    header ('location: listarpaciente.php');
-} else {
-    echo "<h1>Registro não cadastrado</h1>";
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -34,23 +9,24 @@ if ($qry) {
     <title>cadastro de pacientes</title>
 </head>
 <body>
-    <form method = "post"name = "Paciente"action="">
+    <form method ="post" action="inserirpaciente.php">
+
         <label>Nomeesobrenome</label>
-        <input type="text" nome = "nome" varchar="100">
+        <input type="text" name="nome" varchar="100">
         <label>CPF</label>
-        <input type="text" cpf = "cpf" varchar="15">
+        <input type="text" name="cpfpaciente" varchar="15">
         <label>Endereço</label>
-        <input type="text" endereço = "endereço" varchar="150">
+        <input type="text" endereço="endereço" varchar="150">
         <label>RG</label>
-        <input type="text" RG = "RG" varchar="15">
+        <input type="text" name="rgpaciente" varchar="15">
         <label>Data</label>
-        <input type="date" data = "data" varchar="">
+        <input type="date" name="datanascimento" varchar="">
         <label>Telefone</label>
-        <input type="text" telefone = "telefone" varchar="12">
+        <input type="text" name="telefone" varchar="12">
         <label>Email</label>
-        <input type="text" email = "email" varchar="50">
+        <input type="text" name="email" varchar="50">
         <label>Numerocartaosus</label>
-        <input type="text" numerocartaosus = "numerocartaosus" varchar="30">
+        <input type="text" numerocartaosus = "numcartaosus" varchar="30">
         
         <label>Equipe</label>
         <select>
@@ -61,11 +37,11 @@ if ($qry) {
 </select>
 
         <label>Nomemae</label>
-        <input type="text" nomemae = "nomemae" varchar="100">
+        <input type="text" name="nomemae" varchar="100">
         <label>Nomepae</label>
-        <input type="text" nomepae = "nomepae" varchar="100">
+        <input type="text" name="nomepai" varchar="100">
         <label>raça</label>
-        <input type="text" raca = "raca" varchar="50">
+        <input type="text" name="raca" varchar="50">
         <label>Sexo</label>
                <select>
         <option value="feminino">feminino</option>
@@ -74,9 +50,9 @@ if ($qry) {
 </select>
         
         <label>Tiposanguineo</label>
-        <input type="text" tiposanguineo = "tiposanguineo" varchar="5">
+        <input type="text" name="tiposanguineo" varchar="5">
         <label>Nacionalidade</label>
-        <input type="text" nacionalidade = "nacionalidade" varchar="">
+        <input type="text" name="nacionalidade" varchar="">
         <label>Statuspac</label>
 <select>
         <option value="ativo">ativo</option>
@@ -90,19 +66,6 @@ if ($qry) {
         <br>
         <input type = submit name"salvar" value="Salvar">
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
 </body>
 </html>
 
